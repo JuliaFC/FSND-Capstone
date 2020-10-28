@@ -4,7 +4,7 @@ This app works as a tool for the members of the First Order to access info on th
 
 ## PIP Dependencies
 
-Install dependencies by naviging to the project root directory and running:
+Install dependencies by navigating to the project root directory and running:
 
 ```bash
 $ pip install -r requirements.txt
@@ -78,10 +78,10 @@ The following API allows you to get, post, delete and update Crew data.
 - No request arguments are required.
 - Returns a list of id and crew pairs.
 
-##### Exmaple request:
+##### Example request:
 `GET /crew`
 
-##### Exmaple response:
+##### Example response:
 
 ```javascript
 {
@@ -106,7 +106,7 @@ The following API allows you to get, post, delete and update Crew data.
 - Data in the body is required.
 - Returns a newly added crew and success status.
 
-##### Exmaple request with data in the body:
+##### Example request with data in the body:
 `POST /crew`
 
 ```javascript
@@ -120,7 +120,7 @@ The following API allows you to get, post, delete and update Crew data.
 
 ```
 
-##### Exmaple response:
+##### Example response:
 ```javascript
 {
     "crew": {
@@ -141,10 +141,10 @@ The following API allows you to get, post, delete and update Crew data.
 - Request arguments: `crew_id`
 - Returns the deleted `crew` and success status.
 
-##### Exmaple request:
+##### Example request:
 `DELETE /crew/1`
 
-##### Exmaple response:
+##### Example response:
 
 ```javascript
 {
@@ -160,7 +160,7 @@ The following API allows you to get, post, delete and update Crew data.
 - Data in the body is required.
 - Returns an updated crew information and success status.
 
-##### Exmaple request with data in the body:
+##### Example request with data in the body:
 `PATCH /crew/1`
 
 ```javascript
@@ -174,7 +174,7 @@ The following API allows you to get, post, delete and update Crew data.
 
 ```
 
-##### Exmaple response:
+##### Example response:
 ```javascript
 {
     "crew": {
@@ -198,10 +198,10 @@ The following API allows you to get, post, delete and update Base data.
 - No request arguments are required.
 - Returns a list of base including `id`, `name`, `planet` and `crew` key:value pairs and success status.
 
-##### Exmaple request:
+##### Example request:
 `GET /base`
 
-##### Exmaple response:
+##### Example response:
 
 ```javascript
 {
@@ -233,7 +233,7 @@ The following API allows you to get, post, delete and update Base data.
 - Data in the body is required.
 - Returns a newly added base and success status.
 
-##### Exmaple request with data in the body:
+##### Example request with data in the body:
 `POST /base`
 
 ```javascript
@@ -243,7 +243,7 @@ The following API allows you to get, post, delete and update Base data.
 }
 ```
 
-##### Exmaple response:
+##### Example response:
 ```javascript
 {
     "base": {
@@ -262,10 +262,10 @@ The following API allows you to get, post, delete and update Base data.
 - Request arguments: `base_id`
 - Returns the deleted `base` and success status.
 
-##### Exmaple request:
+##### Example request:
 `DELETE /base/2`
 
-##### Exmaple response:
+##### Example response:
 
 ```javascript
 {
@@ -281,7 +281,7 @@ The following API allows you to get, post, delete and update Base data.
 - Data in the body is required and includes the base's attributes to update.
 - Returns a base with the updated attributes and success status.
 
-##### Exmaple request with data in the body:
+##### Example request with data in the body:
 `PATCH /base/1`
 
 ```javascript
@@ -291,7 +291,7 @@ The following API allows you to get, post, delete and update Base data.
 }
 ```
 
-##### Exmaple response:
+##### Example response:
 ```javascript
 {
     "base": {
@@ -316,7 +316,7 @@ $ ./test_setup.sh
 ```
 
 ### Retrieve tokens via Auth0
-Authentication tokens included in **test_setup.sh** and [Capstone_Collection.json](https://github.com/JuliaFC/FSND-Capstone/blob/master/Capstone_Collection.json) will expire in **24** hours. Once the tokens expire, please use the following Auth0 link to retrieve the updated tokens accordingly. 
+Authentication tokens are included in **test_setup.sh** and [Capstone_Collection.json](https://github.com/JuliaFC/FSND-Capstone/blob/master/Capstone_Collection.json) will expire in **24** hours. When they expire, please use the following Auth0 link to retrieve the updated tokens accordingly. 
 
 **Auth0 link**:
 https://cowffeeshop.us.auth0.com/authorize?audience=capstone-api&response_type=token&client_id=9thObDYilxkxjY8cWvynTiF4hjH5vyxD&redirect_uri=https://127.0.0.1:5000
@@ -324,7 +324,3 @@ https://cowffeeshop.us.auth0.com/authorize?audience=capstone-api&response_type=t
 **Supreme Leader login**: supremeleader@firstorder.com / password: *Capstone123
 
 **Crew login**: crew@firstorder.com / password: *Capstone123
-
-Make sure you clear the browser cache before you login with link above. After you login, you will see the following link as the browser address. The token is the value of "access_token". So copy the value between "access_token=" and "&expires_in=86400&token_type=Bearer". That's the token we use in Postman and test_setup.sh.
-
-Valid tokens are required before using the app. Open Postman -> What_to_eat_heroku_deployment -> Supreme Leader -> Edit -> Authorization tab, update the old token with the new token in the Token section. Under User folder in Postman, follow the same steps to update User's token in Postman. Then you should be able test the app in different roles.
