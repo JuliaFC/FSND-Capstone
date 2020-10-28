@@ -7,7 +7,7 @@ from flask import jsonify
 import json
 
 DATABASE_NAME = "capstone_fsnd"
-DATABASE_PATH = "postgres://{}/{}".format('postgres:1234@localhost:5432', DATABASE_NAME)
+DATABASE_PATH = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 '''

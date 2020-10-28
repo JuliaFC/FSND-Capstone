@@ -11,6 +11,7 @@ from models import setup_db, db_drop_and_create_all, Crew, Base
 
 SUPREME_LEADER_TOKEN = os.environ['SUPREME_LEADER_TOKEN']
 CREW_TOKEN = os.environ['CREW_TOKEN']
+DATABASE_PATH = os.environ['DATABASE_URL']
 
 FIRST_BASE = 1
 NON_EXISTENT_BASE = 10000
