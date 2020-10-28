@@ -1,0 +1,797 @@
+{
+	"info": {
+		"_postman_id": "2c3b61e1-2e1c-49e6-b7eb-292a3bb17ac7",
+		"name": "Capstone Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Supreme Leader",
+			"item": [
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02d333dc-6308-43ad-ac6a-3c5761767647",
+								"exec": [
+									"pm.test(\"GET base OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/base",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dc3f2dff-c62c-463c-bda9-0a8bd937df35",
+								"exec": [
+									"pm.test(\"POST base OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Death Star\",\r\n    \"planet\": \"Endor\",\r\n    \"crew_id\": \"1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/base",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e7bc9adf-d7e2-41a3-9d8f-67a299efe41f",
+								"exec": [
+									"pm.test(\"PATCH base OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Death Star I\",\r\n    \"planet\": \"Endor\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/base/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3814640-c065-4702-9364-645955f6dc9a",
+								"exec": [
+									"pm.test(\"DEL base OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/base/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6c8d316a-a968-49ee-adfd-e87146e5d20a",
+								"exec": [
+									"pm.test(\"GET crew OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/crew",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd79f234-b9b0-47e4-b47a-e9a240c0f7ff",
+								"exec": [
+									"pm.test(\"POST crew OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kylo Ren\",\r\n    \"rank\": \"Sith Lord\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/crew",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "27f0b57a-ae4f-4c13-b3cf-fac3b30e4111",
+								"exec": [
+									"pm.test(\"PATCH crew OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darth vader\",\r\n    \"rank\": \"Sith Lord\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/crew/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "99df5886-c199-480b-bddc-d57bcbac7cb3",
+								"exec": [
+									"pm.test(\"DEL crew OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{supreme_leader_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/crew/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Crew",
+			"item": [
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2f2d08cb-aa80-4816-8108-725c63a80456",
+								"exec": [
+									"pm.test(\"Get crew OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/crew",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63eba927-50cc-40a9-81c2-b71202e6e359",
+								"exec": [
+									"pm.test(\"No authorization header is present\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kylo Ren\",\r\n    \"rank\": \"Sith Lord\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/crew",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31ecd262-967d-488e-924d-b82c25aaf4af",
+								"exec": [
+									"pm.test(\"No authorization header is present\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Darth vader\",\r\n    \"rank\": \"Sith Lord\",\r\n    \"base_id\": \"2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/crew/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89cb7820-c7f1-4869-b8ff-3659790a5af6",
+								"exec": [
+									"pm.test(\"No authorization header is present\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/crew/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"crew",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f857aa08-7583-4a7b-9427-d692390bdb16",
+								"exec": [
+									"pm.test(\"Get crew OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/base",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da32f9a6-57d5-45f7-b53f-f2d8f07d56d6",
+								"exec": [
+									"pm.test(\"No authorization header is present\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Death Star\",\r\n    \"planet\": \"Endor\",\r\n    \"crew_id\": \"1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/base",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "868807f8-d2f9-4d14-aa93-140578b3f676",
+								"exec": [
+									"pm.test(\"No authorization header is present\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Death Star I\",\r\n    \"planet\": \"Endor\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/base/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "base",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b2e91092-4c26-4d6b-86f6-056d04d73331",
+								"exec": [
+									"pm.test(\"No authorization header is present\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crew_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/base/1",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"base",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5282b9e3-3f34-4dc5-a65a-fb089afc212a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "632b0e29-a32a-4ce5-8352-d69f88ac4d73",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "cdb268e4-2a1d-4338-b345-98ffa6f70074",
+			"key": "supreme_leader_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJyQmlLREd2NEJScWNxdkZMY2tnLSJ9.eyJpc3MiOiJodHRwczovL2Nvd2ZmZWVzaG9wLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1Zjk4MGMyODczMDVhMjAwNzY5MGZiODMiLCJhdWQiOiJjYXBzdG9uZS1hcGkiLCJpYXQiOjE2MDM4ODI2OTMsImV4cCI6MTYwMzk2OTA5MywiYXpwIjoiOXRoT2JEWWlseGt4alk4Y1d2eW5UaUY0aGpINXZ5eEQiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpiYXNlIiwiZGVsZXRlOmNyZXciLCJnZXQ6YmFzZSIsImdldDpjcmV3IiwicGF0Y2g6YmFzZSIsInBhdGNoOmNyZXciLCJwb3N0OmJhc2UiLCJwb3N0OmNyZXciXX0.aNHDqIVq0kdvngFZML5xDxOXi15LnwVuIfl5NEJcB_cjM2d1fr-I6h_ymOAx4tUd_nVhj3WpY1wcGZz5nB1BFbsozmKQXK8x1mrpGYdx-cuIhipEPYqhsyR_hQemvUX1xCBVt39LvidoCFKbZ30fP1mGjbXjK3O1iZEarnKMtc98e2IFUEGBoWPSwHF1KkFKRxfqDM52kibfzk6XKRgVDnUNn7pP4q4fh3t_O7vUmneirtoK-SkfykgTJR1s1XKozSlWSTn6TZmBceIrJTaDUTZ_9sOJnxAKMDd5Y1MKmWN78TuIDgTf17BdKBfVT5uvqkl7siV2HEDLUTbVWG71WA"
+		},
+		{
+			"id": "db3f8bd1-bdf4-4eda-89d1-384e784b2c7c",
+			"key": "crew_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJyQmlLREd2NEJScWNxdkZMY2tnLSJ9.eyJpc3MiOiJodHRwczovL2Nvd2ZmZWVzaG9wLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1Zjk4MTMwMmVkYzY0YTAwNjgyMDAyNGUiLCJhdWQiOiJjYXBzdG9uZS1hcGkiLCJpYXQiOjE2MDM4ODI1OTYsImV4cCI6MTYwMzk2ODk5NiwiYXpwIjoiOXRoT2JEWWlseGt4alk4Y1d2eW5UaUY0aGpINXZ5eEQiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpiYXNlIiwiZ2V0OmNyZXciXX0.HHIH8s8dYoBXFYbMHYGzrZVbCCpKmY4p6NRDgHEFN9LOqRVZKEoBRR0jNx0-gbkzZPbYUGcSlgvQwdJiBmva1CEOTYREQZtD7apwrZaHLDXv2F-0DK_m38sHnGnKv6KAb1asyhvhoIFa6WpXazVBfas3BIH3DPLdmeJn6XbkZwwkery-3yrRq2obAIsCOvqj4qLJ-at6qqJjAnrszTKH9slN54QzgV_cpDviY5V0L0G99-fOYVJ2-tqX8S0wbHwtTcV7yNvO2o5ljWfeYM7DPpkfsoVeMJ3jalvvZIr4l7xNOjzhp0evJVvG14X8x0ox9UTwvX-hibZI9fghWKeKog"
+		},
+		{
+			"id": "57d47767-7ecd-4309-a435-973ae55038ff",
+			"key": "server_url",
+			"value": "https://capstone-fsnd-jf.herokuapp.com"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

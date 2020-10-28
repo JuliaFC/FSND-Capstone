@@ -1,0 +1,171 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.3
+-- Dumped by pg_dump version 12.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: base; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.base (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    planet character varying NOT NULL
+);
+
+
+ALTER TABLE public.base OWNER TO postgres;
+
+--
+-- Name: base_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.base_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.base_id_seq OWNER TO postgres;
+
+--
+-- Name: base_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.base_id_seq OWNED BY public.base.id;
+
+
+--
+-- Name: crew; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.crew (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    rank character varying NOT NULL,
+    date_of_birth date,
+    bio character varying,
+    base_id integer
+);
+
+
+ALTER TABLE public.crew OWNER TO postgres;
+
+--
+-- Name: crew_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.crew_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.crew_id_seq OWNER TO postgres;
+
+--
+-- Name: crew_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.crew_id_seq OWNED BY public.crew.id;
+
+
+--
+-- Name: base id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.base ALTER COLUMN id SET DEFAULT nextval('public.base_id_seq'::regclass);
+
+
+--
+-- Name: crew id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.crew ALTER COLUMN id SET DEFAULT nextval('public.crew_id_seq'::regclass);
+
+
+--
+-- Data for Name: base; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.base (id, name, planet) FROM stdin;
+1	Sith Eternal Base	Ilum
+3	Starkiller Base	Ilum
+\.
+
+
+--
+-- Data for Name: crew; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.crew (id, name, rank, date_of_birth, bio, base_id) FROM stdin;
+1	Luke Skywalker	Commander	0005-12-17	Commander of the First Order	1
+3	Kylo Ren	Commander	0005-12-17	Commander of the First Order	1
+\.
+
+
+--
+-- Name: base_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.base_id_seq', 4, true);
+
+
+--
+-- Name: crew_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.crew_id_seq', 4, true);
+
+
+--
+-- Name: base base_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.base
+    ADD CONSTRAINT base_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: crew crew_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.crew
+    ADD CONSTRAINT crew_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: crew crew_base_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.crew
+    ADD CONSTRAINT crew_base_id_fkey FOREIGN KEY (base_id) REFERENCES public.base(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
