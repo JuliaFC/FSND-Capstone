@@ -1,6 +1,5 @@
 #!/bin/sh -x
 
-# create database with name as dish
 DATABASE_NAME='capstone_fsnd'
 if ! psql -lqt | cut -d \| -f 1 | grep -qw $DATABASE_NAME; then
     echo "A database with the name $DBNAME does not exist."
