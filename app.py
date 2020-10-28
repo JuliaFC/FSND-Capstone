@@ -41,8 +41,6 @@ def create_app(test_config=None):
             return new
         return current
 
-
-
     # ROUTES
 
     @app.route('/crew', methods=['GET'])
