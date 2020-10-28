@@ -11,7 +11,11 @@ from auth import AuthError, requires_auth
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
-    CORS(app, resources={r"/app/*": {"origins": "*"}})
+
+    '''
+    Set up CORS. Allow '*' for origins.
+    '''
+    CORS(app, resource={r"*/api/*": {"origins": "*"}})
 
     @app.after_request
     def after_request(response):
@@ -323,3 +327,8 @@ def create_app(test_config=None):
         return response
     
     return app
+
+app = create_app()
+
+if __name__ == '__main__':
+    app.run()

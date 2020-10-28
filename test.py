@@ -22,7 +22,6 @@ NON_EXISTENT_CREW = 10000
 This class represents the What To Eat test case.
 '''
 
-
 class FirstOrderTestCase(unittest.TestCase):
 
     def setUp(self):
