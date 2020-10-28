@@ -8,9 +8,9 @@ from models import db_drop_and_create_all, setup_db, Crew, Base
 from auth import AuthError, requires_auth
 
 app = Flask(__name__)
+setup_db(app)
 
 def create_app(test_config=None):
-    setup_db(app)
     CORS(app, resources={r"/app/*": {"origins": "*"}})
 
     @app.after_request
