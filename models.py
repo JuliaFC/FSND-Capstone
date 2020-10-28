@@ -14,6 +14,8 @@ db = SQLAlchemy()
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
+
+
 def setup_db(app, database_path=DATABASE_PATH):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -21,20 +23,26 @@ def setup_db(app, database_path=DATABASE_PATH):
     db.app = app
     db.init_app(app)
 
+
 '''
 db_drop_and_create_all()
     drops the database tables and starts fresh
     can be used to initialize a clean database
     !!NOTE you can change the database_filename variable to have multiple versions of a database
 '''
+
+
 def db_drop_and_create_all():
     db.drop_all()
     db.create_all()
+
 
 '''
 Crew
 a persistent crew entity, extends the base SQLAlchemy Model
 '''
+
+
 class Crew(db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
@@ -50,6 +58,7 @@ class Crew(db.Model):
             crew = Crew(name=req_name, rank=req_rank)
             crew.insert()
     '''
+
     def insert(self):
         db.session.add(self)
         db.session.commit()
@@ -62,6 +71,7 @@ class Crew(db.Model):
             crew = Crew(name=req_name, rank=req_rank)
             crew.delete()
     '''
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()
@@ -75,21 +85,23 @@ class Crew(db.Model):
             crew.rank = 'General'
             crew.update()
     '''
+
     def update(self):
         db.session.commit()
 
     def format(self):
         return {
-        'id': self.id,
-        'name': self.name,
-        'rank': self.rank,
-        'date_of_birth': self.date_of_birth,
-        'bio': self.bio,
-        'base_id': self.base_id
+            'id': self.id,
+            'name': self.name,
+            'rank': self.rank,
+            'date_of_birth': self.date_of_birth,
+            'bio': self.bio,
+            'base_id': self.base_id
         }
 
     def __repr__(self):
         return json.dumps(self.format())
+
 
 class Base(db.Model):
     id = Column(Integer, primary_key=True)
@@ -104,6 +116,7 @@ class Base(db.Model):
             base = Base(name=req_name, planet=req_planet)
             base.insert()
     '''
+
     def insert(self):
         db.session.add(self)
         db.session.commit()
@@ -116,6 +129,7 @@ class Base(db.Model):
             base = Base(name=req_name, planet=req_planet)
             base.delete()
     '''
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()
@@ -129,17 +143,17 @@ class Base(db.Model):
             base.planet = 'Ilum'
             base.update()
     '''
+
     def update(self):
         db.session.commit()
 
     def format(self):
         return {
-        'id': self.id,
-        'name': self.name,
-        'planet': self.planet,
-        'crew': [c.format() for c in self.crew],
+            'id': self.id,
+            'name': self.name,
+            'planet': self.planet,
+            'crew': [c.format() for c in self.crew],
         }
 
     def __repr__(self):
         return json.dumps(self.format())
-

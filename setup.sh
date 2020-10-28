@@ -8,6 +8,9 @@ if ! psql -lqt | cut -d \| -f 1 | grep -qw $DATABASE_NAME; then
 fi
 
 # Export the environment variables and set up for the server
+export AUTH0_DOMAIN='cowffeeshop.us.auth0.com'
+export API_AUDIENCE='capstone-api'
+export ALGORITHMS=['RS256']
 export DATABASE_URL='postgresql://localhost:5432/capstone_fsnd' 
 export PGGSSENCMODE=disable 
 export FLASK_APP=app.py 
