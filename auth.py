@@ -35,10 +35,10 @@ def get_token_auth_header():
     finally:
         if auth_header is None:
             raise AuthError({
-            'code': 'no_header',
-            'success': False,
-            'description': 'No authorization header is present.'
-        }, 400)
+                'code': 'no_header',
+                'success': False,
+                'description': 'No authorization header is present.'
+            }, 400)
 
     header_parts = auth_header.split(' ')[1]
     if header_parts is None:

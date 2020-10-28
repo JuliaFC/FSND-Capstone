@@ -7,14 +7,9 @@ from flask_cors import CORS
 from models import db_drop_and_create_all, setup_db, Crew, Base
 from auth import AuthError, requires_auth
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def hello():
-    print("Hello!!!")
 
 def create_app(test_config=None):
+    app = Flask(__name__)
     setup_db(app)
     CORS(app, resources={r"/app/*": {"origins": "*"}})
 
@@ -46,9 +41,14 @@ def create_app(test_config=None):
             return new
         return current
 
-
-
     # ROUTES
+
+    @app.route('/')
+    def hello_app():
+        return jsonify({
+            "success": True,
+            "message": "Hello, to proceed check the documentation!"
+        })
 
     @app.route('/crew', methods=['GET'])
     @requires_auth('get:crew')
@@ -75,18 +75,18 @@ def create_app(test_config=None):
                     "error":
                     'Crew #' + str(crew_id) + ' not found'
                 }), 404
-        
+
             return jsonify({
                 "success": True,
                 "crew": crew
             })
-        except:
+        except BaseException:
             abort(500)
 
     @app.route('/crew', methods=['POST'])
     @requires_auth('post:crew')
     def add_crew_member(token):
-        
+
         body = request.get_json()
         name = body.get('name')
         rank = body.get('rank')
@@ -96,9 +96,14 @@ def create_app(test_config=None):
 
         if (name is None) or (rank is None):
             abort(422)
-        
+
         try:
-            new_crew_member = Crew(name=name, rank=rank, date_of_birth=date_of_birth, bio=bio, base_id=base_id)
+            new_crew_member = Crew(
+                name=name,
+                rank=rank,
+                date_of_birth=date_of_birth,
+                bio=bio,
+                base_id=base_id)
             new_crew_member.insert()
             new_crew_member = new_crew_member.format()
             return jsonify({
@@ -107,7 +112,6 @@ def create_app(test_config=None):
             })
         except IndexError:
             abort(500)
-
 
     @app.route('/crew/<int:crew_id>', methods=['PATCH'])
     @requires_auth('patch:crew')
@@ -121,14 +125,13 @@ def create_app(test_config=None):
                     "error":
                     'Crew #' + str(crew_id) + ' not found to be edited'
                 }), 404
-        
+
             body = request.get_json()
             name = body.get('name')
             rank = body.get('rank')
             date_of_birth = body.get('date_of_birth')
             bio = body.get('bio')
             base_id = body.get('base_id')
-
 
             crew.name = change(name, crew.name)
             crew.rank = change(rank, crew.rank)
@@ -141,11 +144,10 @@ def create_app(test_config=None):
             return jsonify({
                 "success": True,
                 "crew": crew
-                })
+            })
 
         except IndexError:
             abort(422)
-
 
     @app.route('/crew/<int:crew_id>', methods=['DELETE'])
     @requires_auth('delete:crew')
@@ -165,7 +167,6 @@ def create_app(test_config=None):
             "success": True,
             "delete": crew_id
         })
-
 
     @app.route('/base', methods=['GET'])
     @requires_auth('get:base')
@@ -192,22 +193,22 @@ def create_app(test_config=None):
                     "error":
                     'Base #' + str(base_id) + ' not found'
                 }), 404
-        
+
             return jsonify({
                 "success": True,
                 "base": base
             })
-        except:
+        except BaseException:
             abort(500)
 
     @app.route('/base', methods=['POST'])
     @requires_auth('post:base')
     def add_base(token):
-        
+
         body = request.get_json()
         name = body.get('name')
         planet = body.get('planet')
-        
+
         if name is None or planet is None:
             abort(422)
 
@@ -219,9 +220,8 @@ def create_app(test_config=None):
                 "success": True,
                 "base": new_base
             })
-        except:
+        except BaseException:
             abort(500)
-
 
     @app.route('/base/<int:base_id>', methods=['PATCH'])
     @requires_auth('patch:base')
@@ -235,7 +235,7 @@ def create_app(test_config=None):
                     "error":
                     'Base #' + str(base_id) + ' not found to be edited'
                 }), 404
-        
+
             body = request.get_json()
             name = body.get('name')
             planet = body.get('planet')
@@ -249,11 +249,10 @@ def create_app(test_config=None):
             return jsonify({
                 "success": True,
                 "base": base
-                })
+            })
 
         except IndexError:
             abort(422)
-
 
     @app.route('/base/<int:base_id>', methods=['DELETE'])
     @requires_auth('delete:base')
@@ -274,8 +273,6 @@ def create_app(test_config=None):
             "delete": base_id
         })
 
-
-
     # Error Handling
 
     @app.errorhandler(400)
@@ -286,7 +283,6 @@ def create_app(test_config=None):
             "message": "Bad request"
         }), 400
 
-
     @app.errorhandler(404)
     def not_found(error):
         return jsonify({
@@ -294,7 +290,6 @@ def create_app(test_config=None):
             "error": 404,
             "message": "Resource not found"
         }), 404
-
 
     @app.errorhandler(405)
     def method_not_allowed(error):
@@ -304,7 +299,6 @@ def create_app(test_config=None):
             "message": "Method not allowed"
         }), 405
 
-
     @app.errorhandler(422)
     def unprocessable_entity(error):
         return jsonify({
@@ -312,7 +306,6 @@ def create_app(test_config=None):
             "error": 422,
             "message": "Unprocessable entity"
         }), 422
-
 
     @app.errorhandler(500)
     def internal_server_error(error):
@@ -322,11 +315,10 @@ def create_app(test_config=None):
             "message": "Internal server error"
         }), 500
 
-
     @app.errorhandler(AuthError)
     def auth_error(error):
         response = jsonify(error.error)
         response.status_code = error.status_code
         return response
-    
+
     return app
